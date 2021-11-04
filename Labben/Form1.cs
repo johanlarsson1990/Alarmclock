@@ -74,5 +74,28 @@ namespace Labben
                 label7.Text = "!!  Please only enter valid numeric numbers.  !!";
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label5.Text = minuteinput++.ToString();
+        }
+
+        private void startButton(object sender, EventArgs e)
+        {
+            if (timer1.Enabled)
+            {
+                button1.Text = "Start Clock";
+                timer1.Stop();
+                textBox1.ReadOnly = false;
+                textBox2.ReadOnly = false;
+            }
+            else
+            {
+                button1.Text = "Stop Clock";
+                timer1.Start();
+                textBox1.ReadOnly = true;
+                textBox2.ReadOnly = true;
+            }
+        }
     }
 }
