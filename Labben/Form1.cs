@@ -105,7 +105,8 @@ namespace Labben
             }
             if (int.Parse(clockminute.Text) == 0)
             {
-                clockhour.Text = (hourinput + 1).ToString();
+                int addonehour = ++hourinput;
+                clockhour.Text = (addonehour).ToString();
             }
         }
     }

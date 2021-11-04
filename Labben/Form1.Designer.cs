@@ -92,22 +92,22 @@ namespace Labben
             this.clockminuteinput.TextChanged += new System.EventHandler(this.MinuteHourInput);
             this.clockminuteinput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MinuteOnlyNumbers);
             // 
-            // clockminute
+            // clockhour
             // 
             this.clockhour.AutoSize = true;
             this.clockhour.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clockhour.Location = new System.Drawing.Point(96, 141);
-            this.clockhour.Name = "clockminute";
+            this.clockhour.Name = "clockhour";
             this.clockhour.Size = new System.Drawing.Size(49, 33);
             this.clockhour.TabIndex = 5;
             this.clockhour.Text = "00";
             // 
-            // clockhour
+            // clockminute
             // 
             this.clockminute.AutoSize = true;
             this.clockminute.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clockminute.Location = new System.Drawing.Point(168, 141);
-            this.clockminute.Name = "clockhour";
+            this.clockminute.Name = "clockminute";
             this.clockminute.Size = new System.Drawing.Size(49, 33);
             this.clockminute.TabIndex = 6;
             this.clockminute.Text = "00";
