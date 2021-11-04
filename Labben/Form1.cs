@@ -19,7 +19,7 @@ namespace Labben
 
         public int hourinput = 0;
         public int minuteinput = 0;
-
+        
         private void ClockHourInput(object sender, EventArgs e)
         {
             Int32.TryParse(textBox1.Text, out hourinput);
