@@ -124,12 +124,19 @@ namespace Labben
 
         private void RestartHourIf24(object sender, EventArgs e)
         {
-            if (int.Parse(clockhour.Text) == 24)
+            try
             {
-                hourinput = 0;
-                clockhour.Text = hourinput.ToString();
+                if (int.Parse(clockhour.Text) == 24)
+                {
+                    hourinput = 0;
+                    clockhour.Text = hourinput.ToString();
+                }
             }
-        }
+            catch (Exception)
+            {
+                
+            }
+}
 
     }
 }
