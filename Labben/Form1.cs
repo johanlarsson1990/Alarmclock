@@ -35,7 +35,7 @@ namespace Labben
             }
 
             TextBox textbox = sender as TextBox;
-            clockminute.Text = textbox.Text;
+            clockhour.Text = textbox.Text;
         }
 
         private void MinuteHourInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
@@ -54,7 +54,7 @@ namespace Labben
 
 
             TextBox textbox = sender as TextBox;
-            clockhour.Text = textbox.Text;
+            clockminute.Text = textbox.Text;
         }
 
         private void HourOnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Hour:
@@ -77,7 +77,7 @@ namespace Labben
 
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
-            clockhour.Text = minuteinput++.ToString();
+            clockminute.Text = minuteinput++.ToString();
         }
 
         private void startButton(object sender, EventArgs e) //Start-knappen till klock-timern.
@@ -97,12 +97,15 @@ namespace Labben
                 clockminuteinput.ReadOnly = true;
             }
         }
-        private void label5_TextChanged(object sender, EventArgs e) // If-sats som inkrementerar Hour med 1 när det blir 60 minuter.
+        private void AddHourIfMin60(object sender, EventArgs e) // If-sats som inkrementerar Hour med 1 när det blir 60 minuter.
         {
-            if (int.Parse(clockhour.Text) == 59)
+            if (int.Parse(clockminute.Text) == 59)
             {
-                minuteinput = 1;
-                clockminute.Text = (hourinput + 1).ToString();
+                minuteinput = 0;    
+            }
+            if (int.Parse(clockminute.Text) == 0)
+            {
+                clockhour.Text = (hourinput + 1).ToString();
             }
         }
     }

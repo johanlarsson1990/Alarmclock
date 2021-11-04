@@ -35,8 +35,8 @@ namespace Labben
             this.label3 = new System.Windows.Forms.Label();
             this.clockhourinput = new System.Windows.Forms.TextBox();
             this.clockminuteinput = new System.Windows.Forms.TextBox();
-            this.clockminute = new System.Windows.Forms.Label();
             this.clockhour = new System.Windows.Forms.Label();
+            this.clockminute = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.errormessage = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -94,24 +94,24 @@ namespace Labben
             // 
             // clockminute
             // 
-            this.clockminute.AutoSize = true;
-            this.clockminute.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockminute.Location = new System.Drawing.Point(96, 141);
-            this.clockminute.Name = "clockminute";
-            this.clockminute.Size = new System.Drawing.Size(49, 33);
-            this.clockminute.TabIndex = 5;
-            this.clockminute.Text = "00";
+            this.clockhour.AutoSize = true;
+            this.clockhour.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockhour.Location = new System.Drawing.Point(96, 141);
+            this.clockhour.Name = "clockminute";
+            this.clockhour.Size = new System.Drawing.Size(49, 33);
+            this.clockhour.TabIndex = 5;
+            this.clockhour.Text = "00";
             // 
             // clockhour
             // 
-            this.clockhour.AutoSize = true;
-            this.clockhour.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockhour.Location = new System.Drawing.Point(168, 141);
-            this.clockhour.Name = "clockhour";
-            this.clockhour.Size = new System.Drawing.Size(49, 33);
-            this.clockhour.TabIndex = 6;
-            this.clockhour.Text = "00";
-            this.clockhour.TextChanged += new System.EventHandler(this.label5_TextChanged);
+            this.clockminute.AutoSize = true;
+            this.clockminute.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockminute.Location = new System.Drawing.Point(168, 141);
+            this.clockminute.Name = "clockhour";
+            this.clockminute.Size = new System.Drawing.Size(49, 33);
+            this.clockminute.TabIndex = 6;
+            this.clockminute.Text = "00";
+            this.clockminute.TextChanged += new System.EventHandler(this.AddHourIfMin60);
             // 
             // label6
             // 
@@ -155,8 +155,8 @@ namespace Labben
             this.Controls.Add(this.button1);
             this.Controls.Add(this.errormessage);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.clockhour);
             this.Controls.Add(this.clockminute);
+            this.Controls.Add(this.clockhour);
             this.Controls.Add(this.clockminuteinput);
             this.Controls.Add(this.clockhourinput);
             this.Controls.Add(this.label3);
@@ -177,8 +177,8 @@ namespace Labben
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox clockminuteinput;
-        private System.Windows.Forms.Label clockminute;
-        public System.Windows.Forms.Label clockhour;
+        private System.Windows.Forms.Label clockhour;
+        public System.Windows.Forms.Label clockminute;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label errormessage;
         private System.Windows.Forms.TextBox clockhourinput;
