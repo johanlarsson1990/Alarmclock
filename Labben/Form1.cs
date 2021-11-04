@@ -15,6 +15,10 @@ namespace Labben
         public Form1()
         {
             InitializeComponent();
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.FlatAppearance.BorderColor = BackColor;
+            button3.FlatAppearance.MouseOverBackColor = BackColor;
+            button3.FlatAppearance.MouseDownBackColor = BackColor;
         }
         public bool setalarm = false;
         public int hourinput = 0;
@@ -76,12 +80,21 @@ namespace Labben
                 errormessage.Text = "!!  Please only enter valid numeric numbers.  !!";
             }
         }
-
+        
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
+            int count = alarmminute + 10;
             clockminute.Text = minuteinput++.ToString();
+            if(int.Parse(clockminute.Text) >= alarmminute && int.Parse(clockminute.Text) == count)
+            {
+               // this.webBrowser1.DocumentText = "";
+                errormessage.Text = "";
+                setalarm = false;
+            }
+            
             if (alarmhour == int.Parse(clockhour.Text) & alarmminute == int.Parse(clockminute.Text) & setalarm == true)
             {
+                errormessage.Text = "WAKI WAKI HANDS OFF SNAKEY!!!!";
                 var embed = "<html><head>" +
                 "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
                 "</head><body>" +
@@ -207,5 +220,10 @@ namespace Labben
             alarmMinput.Text = textbox.Text;
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            this.webBrowser1.DocumentText = "";
+        }
     }
 }
