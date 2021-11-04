@@ -19,82 +19,90 @@ namespace Labben
 
         public int hourinput = 0;
         public int minuteinput = 0;
-        
-        private void ClockHourInput(object sender, EventArgs e)
+
+        private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
-            Int32.TryParse(textBox1.Text, out hourinput);
+            Int32.TryParse(clockhourinput.Text, out hourinput);
             if (hourinput < 0)
             {
-                textBox1.Text = "0";
-                label7.Text = "!!  Minimum allowed number is 0  !!";
+                clockhourinput.Text = "0";
+                errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
             else if (hourinput >= 24)
             {
-                textBox1.Text = "23";
-                label7.Text = "!!  Maximum allowed number is 23  !!";
+                clockhourinput.Text = "23";
+                errormessage.Text = "!!  Maximum allowed number is 23  !!";
             }
 
             TextBox textbox = sender as TextBox;
-            label4.Text = textbox.Text;
+            clockminute.Text = textbox.Text;
         }
 
-        private void MinuteHourInput(object sender, EventArgs e)
+        private void MinuteHourInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
         {
-            Int32.TryParse(textBox2.Text, out minuteinput);
+            Int32.TryParse(clockminuteinput.Text, out minuteinput);
             if (minuteinput < 0)
             {
-                textBox2.Text = "0";
-                label7.Text = "!!  Minimum allowed number is 0  !!";
+                clockminuteinput.Text = "0";
+                errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
             else if (minuteinput >= 60)
             {
-                textBox2.Text = "59";
-                label7.Text = "!!  Maximum allowed number is 23  !!";
+                clockminuteinput.Text = "59";
+                errormessage.Text = "!!  Maximum allowed number is 23  !!";
             }
 
 
             TextBox textbox = sender as TextBox;
-            label5.Text = textbox.Text;
+            clockhour.Text = textbox.Text;
         }
 
-        private void HourOnlyNumbers(object sender, KeyPressEventArgs e)
+        private void HourOnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Hour:
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-                label7.Text = "!!  Please only enter valid numeric numbers.  !!";
+                errormessage.Text = "!!  Please only enter valid numeric numbers.  !!";
             }
         }
 
-        private void MinuteOnlyNumbers(object sender, KeyPressEventArgs e)
+        private void MinuteOnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Minute:
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-                label7.Text = "!!  Please only enter valid numeric numbers.  !!";
+                errormessage.Text = "!!  Please only enter valid numeric numbers.  !!";
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
-            label5.Text = minuteinput++.ToString();
+            clockhour.Text = minuteinput++.ToString();
         }
 
-        private void startButton(object sender, EventArgs e)
+        private void startButton(object sender, EventArgs e) //Start-knappen till klock-timern.
         {
             if (timer1.Enabled)
             {
                 button1.Text = "Start Clock";
                 timer1.Stop();
-                textBox1.ReadOnly = false;
-                textBox2.ReadOnly = false;
+                clockhourinput.ReadOnly = false;
+                clockminuteinput.ReadOnly = false;
             }
             else
             {
                 button1.Text = "Stop Clock";
                 timer1.Start();
-                textBox1.ReadOnly = true;
-                textBox2.ReadOnly = true;
+                clockhourinput.ReadOnly = true;
+                clockminuteinput.ReadOnly = true;
+            }
+        }
+        private void label5_TextChanged(object sender, EventArgs e) // If-sats som inkrementerar Hour med 1 när det blir 60 minuter.
+        {
+            if (int.Parse(clockhour.Text) == 59)
+            {
+                minuteinput = 1;
+                clockminute.Text = (hourinput + 1).ToString();
             }
         }
     }
