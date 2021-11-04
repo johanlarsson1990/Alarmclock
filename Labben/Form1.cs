@@ -16,9 +16,11 @@ namespace Labben
         {
             InitializeComponent();
         }
-
+        public bool setalarm = false;
         public int hourinput = 0;
         public int minuteinput = 0;
+        public int alarmhour = 0;
+        public int alarmminute = 0;
 
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
@@ -78,6 +80,17 @@ namespace Labben
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
             clockminute.Text = minuteinput++.ToString();
+            if (alarmhour == int.Parse(clockhour.Text) & alarmminute == int.Parse(clockminute.Text) & setalarm == true)
+            {
+                var embed = "<html><head>" +
+                "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
+                "</head><body>" +
+                "<iframe width=\"620\" height=\"340\" src=\"{0}\"" +
+                "frameborder = \"0\" allow =\"autoplay;loop; encrypted-media\" allowfullscreen></iframe>" +
+                "</body></html>";
+                var url = "https://www.youtube.com/embed/iik25wqIuFo?autoplay=1&loop=1&playlist=iik25wqIuFo";
+                this.webBrowser1.DocumentText = string.Format(embed, url);
+            }
         }
 
         private void startButton(object sender, EventArgs e) //Start-knappen till klock-timern.
@@ -101,6 +114,26 @@ namespace Labben
                 clockminuteinput.ReadOnly = true;
             }
         }
+        private void setAlarm(object sender, EventArgs e)
+        {
+            if (setalarm)
+            {
+                setalarm = false;
+                button2.Text = "Start Alarm";
+               // timer1.Stop();
+                alarmHinput.ReadOnly = false;
+                alarmMinput.ReadOnly = false;
+                errormessage.Text = ""; 
+            }
+            else
+            {
+                setalarm = true;
+                button2.Text = "Unset Alarm";
+              //  timer1.Start();
+                alarmHinput.ReadOnly = true;
+                alarmMinput.ReadOnly = true;   
+            }
+        }
         private void AddHourIfMin60(object sender, EventArgs e) // If-sats som inkrementerar Hour med 1 när det blir 60 minuter.
         {
             try
@@ -114,7 +147,6 @@ namespace Labben
                     int addonehour = ++hourinput;
                     clockhour.Text = (addonehour).ToString();
                 }
-
             }
             catch (Exception)
             {
@@ -129,6 +161,48 @@ namespace Labben
                 hourinput = 0;
                 clockhour.Text = hourinput.ToString();
             }
+            //else if (int.Parse(alarmHinput.Text) == 24)
+            //{
+            //    hourinput = 0;
+            //    alarmHinput.Text = hourinput.ToString();
+            //}
+        }
+        
+        private void alarmHourInput(object sender, EventArgs e)
+        {
+            Int32.TryParse(alarmHinput.Text, out alarmhour);
+            if (alarmhour < 0)
+            {
+                alarmHinput.Text = "0";
+                errormessage.Text = "!!  Minimum allowed number is 0  !!";
+            }
+            else if (alarmhour >= 24)
+            {
+                alarmHinput.Text = "23";
+                errormessage.Text = "!!  Maximum allowed number is 23  !!";
+            }
+
+            TextBox textbox = sender as TextBox;
+            alarmHinput.Text = textbox.Text;
+        }
+
+        private void alarmMinuteInput(object sender, EventArgs e)
+        {
+            Int32.TryParse(alarmMinput.Text, out alarmminute);
+            if (alarmminute < 0)
+            {
+                alarmMinput.Text = "0";
+                errormessage.Text = "!!  Minimum allowed number is 0  !!";
+            }
+            else if (alarmminute >= 60)
+            {
+                alarmMinput.Text = "59";
+                errormessage.Text = "!!  Maximum allowed number is 23  !!";
+            }
+
+
+            TextBox textbox = sender as TextBox;
+            alarmMinput.Text = textbox.Text;
         }
 
     }
