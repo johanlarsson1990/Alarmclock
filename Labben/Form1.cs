@@ -99,14 +99,22 @@ namespace Labben
         }
         private void AddHourIfMin60(object sender, EventArgs e) // If-sats som inkrementerar Hour med 1 när det blir 60 minuter.
         {
-            if (int.Parse(clockminute.Text) == 59)
+            try
             {
-                minuteinput = 0;    
+                if (int.Parse(clockminute.Text) == 59)
+                {
+                    minuteinput = 0;
+                }
+                if (int.Parse(clockminute.Text) == 0)
+                {
+                    int addonehour = ++hourinput;
+                    clockhour.Text = (addonehour).ToString();
+                }
+
             }
-            if (int.Parse(clockminute.Text) == 0)
+            catch (Exception)
             {
-                int addonehour = ++hourinput;
-                clockhour.Text = (addonehour).ToString();
+
             }
         }
     }
