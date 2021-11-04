@@ -7,8 +7,8 @@ using System.Windows.Forms;
 
 namespace Labben
 {
-    class Hour : Form
+    public class Hour : Form
     {
-        
+        int hour = 0;
     }
 }
