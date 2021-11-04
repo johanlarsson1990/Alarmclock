@@ -76,7 +76,7 @@ namespace Labben
             // 
             // clockhourinput
             // 
-            this.clockhourinput.Location = new System.Drawing.Point(142, 73);
+            this.clockhourinput.Location = new System.Drawing.Point(142, 66);
             this.clockhourinput.Name = "clockhourinput";
             this.clockhourinput.Size = new System.Drawing.Size(36, 20);
             this.clockhourinput.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace Labben
             // 
             // clockminuteinput
             // 
-            this.clockminuteinput.Location = new System.Drawing.Point(142, 100);
+            this.clockminuteinput.Location = new System.Drawing.Point(142, 97);
             this.clockminuteinput.Name = "clockminuteinput";
             this.clockminuteinput.Size = new System.Drawing.Size(36, 20);
             this.clockminuteinput.TabIndex = 4;
@@ -101,6 +101,7 @@ namespace Labben
             this.clockhour.Size = new System.Drawing.Size(49, 33);
             this.clockhour.TabIndex = 5;
             this.clockhour.Text = "00";
+            this.clockhour.TextChanged += new System.EventHandler(this.RestartHourIf24);
             // 
             // clockminute
             // 
@@ -126,14 +127,13 @@ namespace Labben
             // errormessage
             // 
             this.errormessage.AutoSize = true;
-            this.errormessage.Location = new System.Drawing.Point(40, 40);
+            this.errormessage.Location = new System.Drawing.Point(40, 48);
             this.errormessage.Name = "errormessage";
             this.errormessage.Size = new System.Drawing.Size(0, 13);
             this.errormessage.TabIndex = 8;
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button1

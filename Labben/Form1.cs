@@ -88,6 +88,10 @@ namespace Labben
                 timer1.Stop();
                 clockhourinput.ReadOnly = false;
                 clockminuteinput.ReadOnly = false;
+                clockhour.Text = clockhourinput.Text.ToString();
+                clockminute.Text = clockminuteinput.Text.ToString();
+                minuteinput = int.Parse(clockminuteinput.Text);
+                hourinput = int.Parse(clockhourinput.Text);
             }
             else
             {
@@ -109,5 +113,15 @@ namespace Labben
                 clockhour.Text = (addonehour).ToString();
             }
         }
+
+        private void RestartHourIf24(object sender, EventArgs e)
+        {
+            if (int.Parse(clockhour.Text) == 24)
+            {
+                hourinput = 0;
+                clockhour.Text = hourinput.ToString();
+            }
+        }
+
     }
 }
