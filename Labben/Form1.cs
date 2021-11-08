@@ -20,14 +20,11 @@ namespace Labben
             button3.FlatAppearance.MouseOverBackColor = BackColor;
             button3.FlatAppearance.MouseDownBackColor = BackColor;
         }
-        public bool starttimer = false;
         public bool setalarm = false;
         public int hourInput = 00;
         public int minuteInput = 00;
         public int alarmhour = 00;
         public int alarmminute = 00;
-        
-
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
@@ -88,9 +85,11 @@ namespace Labben
         
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
+            var hourString = hourInput < 9 ? "0" + hourInput : hourInput.ToString();
             var minuteString = minuteInput > 9 ? minuteInput++.ToString() : "0" + minuteInput++;
             int count = alarmminute + 10;
             clockminute.Text = minuteString;
+            clockhour.Text = hourString;
             if(int.Parse(clockminute.Text) >= alarmminute && int.Parse(clockminute.Text) == count)
             {
                // this.webBrowser1.DocumentText = "";
@@ -171,6 +170,13 @@ namespace Labben
                     minuteInput = 0;
                     int addonehour = ++hourInput;
                     clockhour.Text = (addonehour).ToString();
+                }
+                if (clockhour.Text == "23" && clockminute.Text == "60" && timer1.Enabled)
+                {
+                    hourInput = 0;
+                    minuteInput = 0;
+                    clockhour.Text = "0";
+                    clockminute.Text = "00";
                 }
                        
             }
