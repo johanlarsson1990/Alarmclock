@@ -33,6 +33,7 @@ namespace Labben
             Int32.TryParse(clockhourinput.Text, out hourinput);
             if (hourinput < 0)
             {
+                
                 clockhourinput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
@@ -157,7 +158,7 @@ namespace Labben
                 {
                     minuteinput = 0;
                 }
-                if (int.Parse(clockminute.Text) == 0)
+                if (int.Parse(clockminute.Text) < 0)
                 {
                     int addonehour = ++hourinput;
                     clockhour.Text = (addonehour).ToString();
