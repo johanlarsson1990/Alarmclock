@@ -33,8 +33,8 @@ namespace Labben
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.clockhourinput = new System.Windows.Forms.TextBox();
-            this.clockminuteinput = new System.Windows.Forms.TextBox();
+            this.clockHourInput = new System.Windows.Forms.TextBox();
+            this.clockMinuteInput = new System.Windows.Forms.TextBox();
             this.clockhour = new System.Windows.Forms.Label();
             this.clockminute = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -84,21 +84,21 @@ namespace Labben
             // 
             // clockhourinput
             // 
-            this.clockhourinput.Location = new System.Drawing.Point(129, 66);
-            this.clockhourinput.Name = "clockhourinput";
-            this.clockhourinput.Size = new System.Drawing.Size(36, 20);
-            this.clockhourinput.TabIndex = 3;
-            this.clockhourinput.TextChanged += new System.EventHandler(this.ClockHourInput);
-            this.clockhourinput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HourOnlyNumbers);
+            this.clockHourInput.Location = new System.Drawing.Point(129, 66);
+            this.clockHourInput.Name = "clockhourinput";
+            this.clockHourInput.Size = new System.Drawing.Size(36, 20);
+            this.clockHourInput.TabIndex = 3;
+            this.clockHourInput.TextChanged += new System.EventHandler(this.ClockHourInput);
+            this.clockHourInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HourOnlyNumbers);
             // 
             // clockminuteinput
             // 
-            this.clockminuteinput.Location = new System.Drawing.Point(129, 101);
-            this.clockminuteinput.Name = "clockminuteinput";
-            this.clockminuteinput.Size = new System.Drawing.Size(36, 20);
-            this.clockminuteinput.TabIndex = 4;
-            this.clockminuteinput.TextChanged += new System.EventHandler(this.MinuteHourInput);
-            this.clockminuteinput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MinuteOnlyNumbers);
+            this.clockMinuteInput.Location = new System.Drawing.Point(129, 101);
+            this.clockMinuteInput.Name = "clockminuteinput";
+            this.clockMinuteInput.Size = new System.Drawing.Size(36, 20);
+            this.clockMinuteInput.TabIndex = 4;
+            this.clockMinuteInput.TextChanged += new System.EventHandler(this.ClockMinuteInput);
+            this.clockMinuteInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MinuteOnlyNumbers);
             // 
             // clockhour
             // 
@@ -203,7 +203,7 @@ namespace Labben
             this.button2.TabIndex = 15;
             this.button2.Text = "Set Alarm";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.setAlarm);
+            this.button2.Click += new System.EventHandler(this.SetAlarm);
             // 
             // alarmMinput
             // 
@@ -250,8 +250,8 @@ namespace Labben
             this.Controls.Add(this.label6);
             this.Controls.Add(this.clockminute);
             this.Controls.Add(this.clockhour);
-            this.Controls.Add(this.clockminuteinput);
-            this.Controls.Add(this.clockhourinput);
+            this.Controls.Add(this.clockMinuteInput);
+            this.Controls.Add(this.clockHourInput);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -269,12 +269,12 @@ namespace Labben
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox clockminuteinput;
+        private System.Windows.Forms.TextBox clockMinuteInput;
         private System.Windows.Forms.Label clockhour;
         public System.Windows.Forms.Label clockminute;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label errormessage;
-        private System.Windows.Forms.TextBox clockhourinput;
+        private System.Windows.Forms.TextBox clockHourInput;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;

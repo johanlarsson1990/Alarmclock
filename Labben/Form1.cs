@@ -21,8 +21,8 @@ namespace Labben
             button3.FlatAppearance.MouseDownBackColor = BackColor;
         }
         public bool setalarm = false;
-        public int hourinput = 0;
-        public int minuteinput = 0;
+        public int hourInput = 0;
+        public int minuteInput = 0;
         public int alarmhour = 0;
         public int alarmminute = 0;
         
@@ -30,16 +30,16 @@ namespace Labben
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
             
-            Int32.TryParse(clockhourinput.Text, out hourinput);
-            if (hourinput < 0)
+            Int32.TryParse(clockHourInput.Text, out hourInput);
+            if (hourInput < 0)
             {
                 
-                clockhourinput.Text = "0";
+                clockHourInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
-            else if (hourinput >= 24)
+            else if (hourInput >= 24)
             {
-                clockhourinput.Text = "23";
+                clockHourInput.Text = "23";
                 errormessage.Text = "!!  Maximum allowed number is 23  !!";
             }
 
@@ -47,18 +47,18 @@ namespace Labben
             clockhour.Text = textbox.Text;
         }
 
-        private void MinuteHourInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
+        private void ClockMinuteInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
         {
-            Int32.TryParse(clockminuteinput.Text, out minuteinput);
-            if (minuteinput < 0)
+            Int32.TryParse(clockMinuteInput.Text, out minuteInput);
+            if (minuteInput < 0)
             {
-                clockminuteinput.Text = "0";
+                clockMinuteInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
-            else if (minuteinput >= 60)
+            else if (minuteInput >= 60)
             {
-                clockminuteinput.Text = "59";
-                errormessage.Text = "!!  Maximum allowed number is 23  !!";
+                clockMinuteInput.Text = "59";
+                errormessage.Text = "!!  Maximum allowed number is 59  !!";
             }
 
 
@@ -87,7 +87,7 @@ namespace Labben
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
             int count = alarmminute + 10;
-            clockminute.Text = minuteinput++.ToString();
+            clockminute.Text = minuteInput++.ToString();
             if(int.Parse(clockminute.Text) >= alarmminute && int.Parse(clockminute.Text) == count)
             {
                // this.webBrowser1.DocumentText = "";
@@ -115,22 +115,22 @@ namespace Labben
             {
                 button1.Text = "Start Clock";
                 timer1.Stop();
-                clockhourinput.ReadOnly = false;
-                clockminuteinput.ReadOnly = false;
-                clockhour.Text = clockhourinput.Text.ToString();
-                clockminute.Text = clockminuteinput.Text.ToString();
-                minuteinput = int.Parse(clockminuteinput.Text);
-                hourinput = int.Parse(clockhourinput.Text);
+                clockHourInput.ReadOnly = false;
+                clockMinuteInput.ReadOnly = false;
+                clockhour.Text = clockHourInput.Text.ToString();
+                clockminute.Text = clockMinuteInput.Text.ToString();
+                minuteInput = int.Parse(clockMinuteInput.Text);
+                hourInput = int.Parse(clockHourInput.Text);
             }
             else
             {
                 button1.Text = "Stop Clock";
                 timer1.Start();
-                clockhourinput.ReadOnly = true;
-                clockminuteinput.ReadOnly = true;
+                clockHourInput.ReadOnly = true;
+                clockMinuteInput.ReadOnly = true;
             }
         }
-        private void setAlarm(object sender, EventArgs e)
+        private void SetAlarm(object sender, EventArgs e)
         {
             if (setalarm)
             {
@@ -156,11 +156,11 @@ namespace Labben
             {
                 if (int.Parse(clockminute.Text) == 59)
                 {
-                    minuteinput = 0;
+                    minuteInput = 0;
                 }
                 if (int.Parse(clockminute.Text) < 0)
                 {
-                    int addonehour = ++hourinput;
+                    int addonehour = ++hourInput;
                     clockhour.Text = (addonehour).ToString();
                 }
             }
@@ -176,8 +176,8 @@ namespace Labben
             {
                 if (int.Parse(clockhour.Text) == 24)
                 {
-                    hourinput = 0;
-                    clockhour.Text = hourinput.ToString();
+                    hourInput = 0;
+                    clockhour.Text = hourInput.ToString();
                 }
             }
             catch (Exception)
