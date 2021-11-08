@@ -8,6 +8,14 @@ namespace Labben
 {
     class Minute
     {
-       
+        public int MinuteValue { get; set; }
+        public Minute()
+        {
+            
+        }
+        void Tick()
+        {
+
+        }
     }
 }

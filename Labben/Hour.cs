@@ -8,5 +8,14 @@ namespace Labben
 {
     class Hour
     {
+        public int HourValue { get; set; }
+        public Hour()
+        {
+
+        }
+        void Tick()
+        {
+
+        }
     }
 }
