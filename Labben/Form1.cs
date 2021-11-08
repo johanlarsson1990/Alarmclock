@@ -19,12 +19,14 @@ namespace Labben
             button3.FlatAppearance.BorderColor = BackColor;
             button3.FlatAppearance.MouseOverBackColor = BackColor;
             button3.FlatAppearance.MouseDownBackColor = BackColor;
+            errormessage.ForeColor = Color.Red;
         }
         public bool setalarm = false;
         public int hourInput = 00;
         public int minuteInput = 00;
         public int alarmhour = 00;
         public int alarmminute = 00;
+        
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
@@ -59,13 +61,13 @@ namespace Labben
                 clockMinuteInput.Text = "59";
                 errormessage.Text = "!!  Maximum allowed number is 59  !!";
             }
-
+            
 
             TextBox textbox = sender as TextBox;
             clockminute.Text = textbox.Text;
         }
 
-        private void HourOnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Hour:
+        private void OnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Hour & Set Minute:
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -74,15 +76,15 @@ namespace Labben
             }
         }
 
-        private void MinuteOnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Minute:
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-                errormessage.Text = "!!  Please only enter valid numeric numbers.  !!";
-            }
-        }
-        
+        //private void MinuteOnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Minute:
+        //{
+        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+        //    {
+        //        e.Handled = true;
+        //        errormessage.Text = "!!  Please only enter valid numeric numbers.  !!";
+        //    }
+        //}
+
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
             var hourString = hourInput < 9 ? "0" + hourInput : hourInput.ToString();
@@ -165,17 +167,17 @@ namespace Labben
         {
             try
             {
-                if (clockminute.Text == "59" && timer1.Enabled)
+                if (int.Parse(clockminute.Text) == 59 && timer1.Enabled)
                 {
                     minuteInput = 0;
                     int addonehour = ++hourInput;
                     clockhour.Text = (addonehour).ToString();
                 }
-                if (clockhour.Text == "23" && clockminute.Text == "60" && timer1.Enabled)
+                if (int.Parse(clockhour.Text) == 23 && int.Parse(clockminute.Text) >= 59 && timer1.Enabled)
                 {
                     hourInput = 0;
                     minuteInput = 0;
-                    clockhour.Text = "0";
+                    clockhour.Text = "00";
                     clockminute.Text = "00";
                 }
                        

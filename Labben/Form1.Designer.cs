@@ -82,23 +82,25 @@ namespace Labben
             this.label3.TabIndex = 2;
             this.label3.Text = "Set Minute: ";
             // 
-            // clockhourinput
+            // clockHourInput
             // 
             this.clockHourInput.Location = new System.Drawing.Point(129, 66);
-            this.clockHourInput.Name = "clockhourinput";
+            this.clockHourInput.MaxLength = 2;
+            this.clockHourInput.Name = "clockHourInput";
             this.clockHourInput.Size = new System.Drawing.Size(36, 20);
             this.clockHourInput.TabIndex = 3;
             this.clockHourInput.TextChanged += new System.EventHandler(this.ClockHourInput);
-            this.clockHourInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HourOnlyNumbers);
+            this.clockHourInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
-            // clockminuteinput
+            // clockMinuteInput
             // 
             this.clockMinuteInput.Location = new System.Drawing.Point(129, 101);
-            this.clockMinuteInput.Name = "clockminuteinput";
+            this.clockMinuteInput.MaxLength = 2;
+            this.clockMinuteInput.Name = "clockMinuteInput";
             this.clockMinuteInput.Size = new System.Drawing.Size(36, 20);
             this.clockMinuteInput.TabIndex = 4;
             this.clockMinuteInput.TextChanged += new System.EventHandler(this.ClockMinuteInput);
-            this.clockMinuteInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MinuteOnlyNumbers);
+            this.clockMinuteInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
             // clockhour
             // 
@@ -189,10 +191,12 @@ namespace Labben
             // alarmHinput
             // 
             this.alarmHinput.Location = new System.Drawing.Point(129, 289);
+            this.alarmHinput.MaxLength = 2;
             this.alarmHinput.Name = "alarmHinput";
             this.alarmHinput.Size = new System.Drawing.Size(36, 20);
             this.alarmHinput.TabIndex = 13;
             this.alarmHinput.TextChanged += new System.EventHandler(this.AlarmHourInput);
+            this.alarmHinput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
             // button2
             // 
@@ -208,10 +212,12 @@ namespace Labben
             // alarmMinput
             // 
             this.alarmMinput.Location = new System.Drawing.Point(129, 320);
+            this.alarmMinput.MaxLength = 2;
             this.alarmMinput.Name = "alarmMinput";
             this.alarmMinput.Size = new System.Drawing.Size(36, 20);
             this.alarmMinput.TabIndex = 16;
             this.alarmMinput.TextChanged += new System.EventHandler(this.AlarmMinuteInput);
+            this.alarmMinput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers);
             // 
             // webBrowser1
             // 
