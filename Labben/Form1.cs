@@ -26,7 +26,7 @@ namespace Labben
         public int alarmhour = 0;
         public int alarmminute = 0;
         
-
+        
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
             
@@ -50,7 +50,7 @@ namespace Labben
         private void ClockMinuteInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
         {
             Int32.TryParse(clockMinuteInput.Text, out minuteInput);
-            if (minuteInput < 0)
+            if (minuteInput <0)
             {
                 clockMinuteInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
@@ -111,23 +111,31 @@ namespace Labben
 
         private void startButton(object sender, EventArgs e) //Start-knappen till klock-timern.
         {
-            if (timer1.Enabled)
+            try
             {
-                button1.Text = "Start Clock";
-                timer1.Stop();
-                clockHourInput.ReadOnly = false;
-                clockMinuteInput.ReadOnly = false;
-                clockhour.Text = clockHourInput.Text.ToString();
-                clockminute.Text = clockMinuteInput.Text.ToString();
-                minuteInput = int.Parse(clockMinuteInput.Text);
-                hourInput = int.Parse(clockHourInput.Text);
+                if(timer1.Enabled)
+                {
+                    button1.Text = "Start Clock";
+                    timer1.Stop();
+                    clockHourInput.ReadOnly = false;
+                    clockMinuteInput.ReadOnly = false;
+                    clockhour.Text = clockHourInput.Text.ToString();
+                    clockminute.Text = clockMinuteInput.Text.ToString();
+                    minuteInput = int.Parse(clockMinuteInput.Text);
+                    hourInput = int.Parse(clockHourInput.Text);
+                }
+                else
+                {
+                    button1.Text = "Stop Clock";
+                    timer1.Start();
+                    clockHourInput.ReadOnly = true;
+                    clockMinuteInput.ReadOnly = true;
+                }
+
             }
-            else
+            catch (Exception)
             {
-                button1.Text = "Stop Clock";
-                timer1.Start();
-                clockHourInput.ReadOnly = true;
-                clockMinuteInput.ReadOnly = true;
+
             }
         }
         private void SetAlarm(object sender, EventArgs e)
@@ -186,7 +194,7 @@ namespace Labben
             }
         }
  
-        private void alarmHourInput(object sender, EventArgs e)
+        private void AlarmHourInput(object sender, EventArgs e)
         {
             Int32.TryParse(alarmHinput.Text, out alarmhour);
             if (alarmhour < 0)
@@ -204,7 +212,7 @@ namespace Labben
             alarmHinput.Text = textbox.Text;
         }
 
-        private void alarmMinuteInput(object sender, EventArgs e)
+        private void AlarmMinuteInput(object sender, EventArgs e)
         {
             Int32.TryParse(alarmMinput.Text, out alarmminute);
             if (alarmminute < 0)
@@ -215,7 +223,7 @@ namespace Labben
             else if (alarmminute >= 60)
             {
                 alarmMinput.Text = "59";
-                errormessage.Text = "!!  Maximum allowed number is 23  !!";
+                errormessage.Text = "!!  Maximum allowed number is 59  !!";
             }
 
 

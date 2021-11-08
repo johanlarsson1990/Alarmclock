@@ -192,7 +192,7 @@ namespace Labben
             this.alarmHinput.Name = "alarmHinput";
             this.alarmHinput.Size = new System.Drawing.Size(36, 20);
             this.alarmHinput.TabIndex = 13;
-            this.alarmHinput.TextChanged += new System.EventHandler(this.alarmHourInput);
+            this.alarmHinput.TextChanged += new System.EventHandler(this.AlarmHourInput);
             // 
             // button2
             // 
@@ -211,7 +211,7 @@ namespace Labben
             this.alarmMinput.Name = "alarmMinput";
             this.alarmMinput.Size = new System.Drawing.Size(36, 20);
             this.alarmMinput.TabIndex = 16;
-            this.alarmMinput.TextChanged += new System.EventHandler(this.alarmMinuteInput);
+            this.alarmMinput.TextChanged += new System.EventHandler(this.AlarmMinuteInput);
             // 
             // webBrowser1
             // 
