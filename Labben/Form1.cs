@@ -25,9 +25,11 @@ namespace Labben
         public int minuteinput = 0;
         public int alarmhour = 0;
         public int alarmminute = 0;
+        
 
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
+            
             Int32.TryParse(clockhourinput.Text, out hourinput);
             if (hourinput < 0)
             {
