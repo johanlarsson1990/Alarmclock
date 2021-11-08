@@ -8,5 +8,13 @@ namespace Labben
 {
     class Alarm
     {
+        void CheckAlarm()
+        {
+
+        }
+        void SetAlarm()
+        {
+
+        }
     }
 }
