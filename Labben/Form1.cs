@@ -20,12 +20,14 @@ namespace Labben
             button3.FlatAppearance.MouseOverBackColor = BackColor;
             button3.FlatAppearance.MouseDownBackColor = BackColor;
         }
+        public bool starttimer = false;
         public bool setalarm = false;
-        public int hourInput = 0;
-        public int minuteInput = 0;
-        public int alarmhour = 0;
-        public int alarmminute = 0;
+        public int hourInput = 00;
+        public int minuteInput = 00;
+        public int alarmhour = 00;
+        public int alarmminute = 00;
         
+
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
@@ -86,8 +88,9 @@ namespace Labben
         
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
+            var minuteString = minuteInput > 9 ? minuteInput++.ToString() : "0" + minuteInput++;
             int count = alarmminute + 10;
-            clockminute.Text = minuteInput++.ToString();
+            clockminute.Text = minuteString;
             if(int.Parse(clockminute.Text) >= alarmminute && int.Parse(clockminute.Text) == count)
             {
                // this.webBrowser1.DocumentText = "";
@@ -135,7 +138,8 @@ namespace Labben
             }
             catch (Exception)
             {
-
+                
+                
             }
         }
         private void SetAlarm(object sender, EventArgs e)
@@ -162,15 +166,13 @@ namespace Labben
         {
             try
             {
-                if (int.Parse(clockminute.Text) == 59)
+                if (clockminute.Text == "59" && timer1.Enabled)
                 {
                     minuteInput = 0;
-                }
-                if (int.Parse(clockminute.Text) < 0)
-                {
                     int addonehour = ++hourInput;
                     clockhour.Text = (addonehour).ToString();
                 }
+                       
             }
             catch (Exception)
             {

@@ -8,6 +8,6 @@ namespace Labben
 {
     class Minute
     {
-       
+      
     }
 }
