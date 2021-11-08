@@ -69,9 +69,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hour.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Hour.cs" />
     <Compile Include="IClock.cs" />
     <Compile Include="Minute.cs" />
     <Compile Include="Program.cs" />

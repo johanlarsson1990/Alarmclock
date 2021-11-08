@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Labben
 {
-    public class Hour : Form
+    class Hour
     {
-        int hour = 0;
     }
 }
