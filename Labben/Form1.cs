@@ -29,8 +29,9 @@ namespace Labben
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
-            
-            Int32.TryParse(clockHourInput.Text, out hourInput);
+            Hour hour = new Hour();
+            hour.HourValue = Convert.ToInt32(clockHourInput.Text);
+            //Int32.TryParse(clockHourInput.Text, out hourInput);
             if (hourInput < 0)
             {
                 clockHourInput.Text = "0";
@@ -48,7 +49,9 @@ namespace Labben
 
         private void ClockMinuteInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
         {
-            Int32.TryParse(clockMinuteInput.Text, out minuteInput);
+            Minute minute = new Minute();
+            minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
+            //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
             if (minuteInput <0)
             {
                 clockMinuteInput.Text = "0";
@@ -97,7 +100,7 @@ namespace Labben
             
             if (alarmhour == int.Parse(clockhour.Text) & alarmminute == int.Parse(clockminute.Text) & setalarm == true)
             {
-                Clock alarm = new Clock();
+                Alarm alarm = new Alarm();
                 var test = alarm.AlarmFunction();
                 errormessage.Text = "WAKI WAKI HANDS OFF SNAKEY!!!!";
                 //var embed = "<html><head>" +
