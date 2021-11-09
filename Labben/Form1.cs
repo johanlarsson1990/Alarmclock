@@ -29,12 +29,10 @@ namespace Labben
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
-            Hour hour = new Hour();
-            hour.HourValue = Convert.ToInt32(clockHourInput.Text);
-           // Int32.TryParse(clockHourInput.Text, out hourInput);
-            if (hour.HourValue < 0)
+            
+            Int32.TryParse(clockHourInput.Text, out hourInput);
+            if (hourInput < 0)
             {
-                
                 clockHourInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
@@ -50,10 +48,8 @@ namespace Labben
 
         private void ClockMinuteInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
         {
-            Minute minute = new Minute();
-            minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
-            //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
-            if (minute.MinuteValue <0)
+            Int32.TryParse(clockMinuteInput.Text, out minuteInput);
+            if (minuteInput <0)
             {
                 clockMinuteInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
@@ -63,8 +59,6 @@ namespace Labben
                 clockMinuteInput.Text = "59";
                 errormessage.Text = "!!  Maximum allowed number is 59  !!";
             }
-            
-
             TextBox textbox = sender as TextBox;
             clockminute.Text = textbox.Text;
         }
