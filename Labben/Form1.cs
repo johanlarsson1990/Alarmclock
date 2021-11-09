@@ -27,18 +27,18 @@ namespace Labben
         public int alarmhour = 00;
         public int alarmminute = 00;
         
-        
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
-            
-            Int32.TryParse(clockHourInput.Text, out hourInput);
-            if (hourInput < 0)
+            Hour hour = new Hour();
+            hour.HourValue = Convert.ToInt32(clockHourInput.Text);
+           // Int32.TryParse(clockHourInput.Text, out hourInput);
+            if (hour.HourValue < 0)
             {
                 
                 clockHourInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
-            else if (hourInput >= 24)
+            else if (hour.HourValue >= 24)
             {
                 clockHourInput.Text = "23";
                 errormessage.Text = "!!  Maximum allowed number is 23  !!";
@@ -50,13 +50,15 @@ namespace Labben
 
         private void ClockMinuteInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
         {
-            Int32.TryParse(clockMinuteInput.Text, out minuteInput);
-            if (minuteInput <0)
+            Minute minute = new Minute();
+            minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
+            //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
+            if (minute.MinuteValue <0)
             {
                 clockMinuteInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
             }
-            else if (minuteInput >= 60)
+            else if (minute.MinuteValue >= 60)
             {
                 clockMinuteInput.Text = "59";
                 errormessage.Text = "!!  Maximum allowed number is 59  !!";
@@ -101,15 +103,21 @@ namespace Labben
             
             if (alarmhour == int.Parse(clockhour.Text) & alarmminute == int.Parse(clockminute.Text) & setalarm == true)
             {
+                Clock alarm = new Clock();
+                var test = alarm.AlarmFunction();
                 errormessage.Text = "WAKI WAKI HANDS OFF SNAKEY!!!!";
-                var embed = "<html><head>" +
-                "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
-                "</head><body>" +
-                "<iframe width=\"620\" height=\"340\" src=\"{0}\"" +
-                "frameborder = \"0\" allow =\"autoplay;loop; encrypted-media\" allowfullscreen></iframe>" +
-                "</body></html>";
-                var url = "https://www.youtube.com/embed/iik25wqIuFo?autoplay=1&loop=1&playlist=iik25wqIuFo";
-                this.webBrowser1.DocumentText = string.Format(embed, url);
+                //var embed = "<html><head>" +
+                //"<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
+                //"</head><body>" +
+                //"<iframe width=\"620\" height=\"340\" src=\"{0}\"" +
+                //"frameborder = \"0\" allow =\"autoplay;loop; encrypted-media\" allowfullscreen></iframe>" +
+                //"</body></html>";
+                //var url = "https://www.youtube.com/embed/iik25wqIuFo?autoplay=1&loop=1&playlist=iik25wqIuFo";
+                this.webBrowser1.DocumentText = string.Format(test[0],test[1]);
+                
+                
+                
+
             }
         }
 
@@ -243,7 +251,6 @@ namespace Labben
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
             this.webBrowser1.DocumentText = "";
         }
     }
