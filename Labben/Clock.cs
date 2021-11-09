@@ -26,7 +26,7 @@ namespace Labben
         {
             Hour = hour;
             Minute = minute;
-            Time =Hour+Minute ;
+            Time = Hour + Minute ;
             return Time;
         }
 
