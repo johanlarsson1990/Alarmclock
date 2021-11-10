@@ -49,6 +49,11 @@ namespace Labben
             this.alarmMinput = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.button3 = new System.Windows.Forms.Button();
+            this.alarm2Minput = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.alarm2Hinput = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +61,7 @@ namespace Labben
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(106, 9);
+            this.label1.Location = new System.Drawing.Point(243, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 27);
             this.label1.TabIndex = 0;
@@ -66,7 +71,7 @@ namespace Labben
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 70);
+            this.label2.Location = new System.Drawing.Point(149, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 1;
@@ -76,7 +81,7 @@ namespace Labben
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 105);
+            this.label3.Location = new System.Drawing.Point(149, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 16);
             this.label3.TabIndex = 2;
@@ -84,7 +89,7 @@ namespace Labben
             // 
             // clockHourInput
             // 
-            this.clockHourInput.Location = new System.Drawing.Point(129, 66);
+            this.clockHourInput.Location = new System.Drawing.Point(266, 72);
             this.clockHourInput.MaxLength = 2;
             this.clockHourInput.Name = "clockHourInput";
             this.clockHourInput.Size = new System.Drawing.Size(36, 20);
@@ -94,7 +99,7 @@ namespace Labben
             // 
             // clockMinuteInput
             // 
-            this.clockMinuteInput.Location = new System.Drawing.Point(129, 101);
+            this.clockMinuteInput.Location = new System.Drawing.Point(266, 107);
             this.clockMinuteInput.MaxLength = 2;
             this.clockMinuteInput.Name = "clockMinuteInput";
             this.clockMinuteInput.Size = new System.Drawing.Size(36, 20);
@@ -106,7 +111,7 @@ namespace Labben
             // 
             this.clockhour.AutoSize = true;
             this.clockhour.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockhour.Location = new System.Drawing.Point(86, 143);
+            this.clockhour.Location = new System.Drawing.Point(223, 149);
             this.clockhour.Name = "clockhour";
             this.clockhour.Size = new System.Drawing.Size(49, 33);
             this.clockhour.TabIndex = 5;
@@ -117,7 +122,7 @@ namespace Labben
             // 
             this.clockminute.AutoSize = true;
             this.clockminute.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockminute.Location = new System.Drawing.Point(141, 143);
+            this.clockminute.Location = new System.Drawing.Point(281, 149);
             this.clockminute.Name = "clockminute";
             this.clockminute.Size = new System.Drawing.Size(49, 33);
             this.clockminute.TabIndex = 6;
@@ -128,7 +133,7 @@ namespace Labben
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(125, 143);
+            this.label6.Location = new System.Drawing.Point(262, 149);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 33);
             this.label6.TabIndex = 7;
@@ -144,12 +149,13 @@ namespace Labben
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(73, 178);
+            this.button1.Location = new System.Drawing.Point(210, 184);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 32);
             this.button1.TabIndex = 9;
@@ -162,7 +168,7 @@ namespace Labben
             this.label4.AutoSize = true;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(106, 234);
+            this.label4.Location = new System.Drawing.Point(228, 236);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 27);
             this.label4.TabIndex = 10;
@@ -172,7 +178,7 @@ namespace Labben
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 289);
+            this.label5.Location = new System.Drawing.Point(58, 289);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 16);
             this.label5.TabIndex = 11;
@@ -182,7 +188,7 @@ namespace Labben
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 324);
+            this.label7.Location = new System.Drawing.Point(58, 324);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 16);
             this.label7.TabIndex = 12;
@@ -190,7 +196,7 @@ namespace Labben
             // 
             // alarmHinput
             // 
-            this.alarmHinput.Location = new System.Drawing.Point(129, 289);
+            this.alarmHinput.Location = new System.Drawing.Point(175, 289);
             this.alarmHinput.MaxLength = 2;
             this.alarmHinput.Name = "alarmHinput";
             this.alarmHinput.Size = new System.Drawing.Size(36, 20);
@@ -211,7 +217,7 @@ namespace Labben
             // 
             // alarmMinput
             // 
-            this.alarmMinput.Location = new System.Drawing.Point(129, 320);
+            this.alarmMinput.Location = new System.Drawing.Point(175, 320);
             this.alarmMinput.MaxLength = 2;
             this.alarmMinput.Name = "alarmMinput";
             this.alarmMinput.Size = new System.Drawing.Size(36, 20);
@@ -238,11 +244,65 @@ namespace Labben
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // alarm2Minput
+            // 
+            this.alarm2Minput.Location = new System.Drawing.Point(418, 320);
+            this.alarm2Minput.MaxLength = 2;
+            this.alarm2Minput.Name = "alarm2Minput";
+            this.alarm2Minput.Size = new System.Drawing.Size(36, 20);
+            this.alarm2Minput.TabIndex = 23;
+            this.alarm2Minput.TextChanged += new System.EventHandler(this.Alarm2MinuteInput);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(313, 366);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(129, 32);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Set Alarm";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.SetAlarm2);
+            // 
+            // alarm2Hinput
+            // 
+            this.alarm2Hinput.Location = new System.Drawing.Point(418, 289);
+            this.alarm2Hinput.MaxLength = 2;
+            this.alarm2Hinput.Name = "alarm2Hinput";
+            this.alarm2Hinput.Size = new System.Drawing.Size(36, 20);
+            this.alarm2Hinput.TabIndex = 21;
+            this.alarm2Hinput.TextChanged += new System.EventHandler(this.Alarm2HourInput);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(301, 324);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 16);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Set Minute: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(301, 289);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 16);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Set Hour: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 422);
+            this.ClientSize = new System.Drawing.Size(529, 422);
+            this.Controls.Add(this.alarm2Minput);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.alarm2Hinput);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.alarmMinput);
@@ -279,7 +339,7 @@ namespace Labben
         private System.Windows.Forms.Label clockhour;
         public System.Windows.Forms.Label clockminute;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label errormessage;
+        public System.Windows.Forms.Label errormessage;
         private System.Windows.Forms.TextBox clockHourInput;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
@@ -291,6 +351,11 @@ namespace Labben
         private System.Windows.Forms.TextBox alarmMinput;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox alarm2Minput;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox alarm2Hinput;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
 

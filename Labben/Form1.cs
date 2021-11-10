@@ -22,10 +22,11 @@ namespace Labben
             errormessage.ForeColor = Color.Red;
         }
         public bool setalarm = false;
-        //public int hourInput = 00;
-        //public int minuteInput = 00;
+        public bool setalarm2 = false;
         public int alarmhour = 00;
+        public int alarm2hour = 00;
         public int alarmminute = 00;
+        public int alarm2minute = 00;
         Clock clock = new Clock();
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
@@ -78,27 +79,19 @@ namespace Labben
             }
         }
 
-        //private void MinuteOnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Minute:
-        //{
-        //    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-        //    {
-        //        e.Handled = true;
-        //        errormessage.Text = "!!  Please only enter valid numeric numbers.  !!";
-        //    }
-        //}
-
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
             var hourString = clock.Hour < 9 ? "0" + clock.Hour : clock.Hour.ToString();
             var minuteString = clock.Minute > 9 ? clock.Minute++.ToString() : "0" + clock.Minute++;
             int count = alarmminute + 10;
+            int count2 = alarm2minute + 10;
             clockminute.Text = minuteString;
             clockhour.Text = hourString;
             if(int.Parse(clockminute.Text) >= alarmminute && int.Parse(clockminute.Text) == count)
             {
-               // this.webBrowser1.DocumentText = "";
                 errormessage.Text = "";
                 setalarm = false;
+                this.webBrowser1.DocumentText = "";
             }
             
             if (alarmhour == int.Parse(clockhour.Text) & alarmminute == int.Parse(clockminute.Text) & setalarm == true)
@@ -106,19 +99,24 @@ namespace Labben
                 Alarm alarm = new Alarm();
                 var test = alarm.AlarmFunction();
                 errormessage.Text = "WAKI WAKI HANDS OFF SNAKEY!!!!";
-                //var embed = "<html><head>" +
-                //"<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>" +
-                //"</head><body>" +
-                //"<iframe width=\"620\" height=\"340\" src=\"{0}\"" +
-                //"frameborder = \"0\" allow =\"autoplay;loop; encrypted-media\" allowfullscreen></iframe>" +
-                //"</body></html>";
-                //var url = "https://www.youtube.com/embed/iik25wqIuFo?autoplay=1&loop=1&playlist=iik25wqIuFo";
                 this.webBrowser1.DocumentText = string.Format(test[0],test[1]);
-                
-                
-                
-
             }
+            if (int.Parse(clockminute.Text) >= alarm2minute && int.Parse(clockminute.Text) == count2)
+            {
+                errormessage.Text = "";
+                setalarm2 = false;
+                this.webBrowser1.DocumentText = "";
+            }
+
+            if (alarm2hour == int.Parse(clockhour.Text) & alarm2minute == int.Parse(clockminute.Text) & setalarm2 == true)
+            {
+                Alarm alarm2 = new Alarm();
+                var test2 = alarm2.AlarmFunction();
+                errormessage.Text = "WAKI WAKI HANDS OFF SNAKEY!!!! Alarm 2";
+                this.webBrowser1.DocumentText = string.Format(test2[0], test2[1]);
+            }
+
+
         }
 
         private void startButton(object sender, EventArgs e) //Start-knappen till klock-timern.
@@ -255,6 +253,62 @@ namespace Labben
         private void button3_Click(object sender, EventArgs e)
         {
             this.webBrowser1.DocumentText = "";
+        }
+
+        private void SetAlarm2(object sender, EventArgs e)
+        {
+            if (setalarm2)
+            {
+                setalarm2 = false;
+                button4.Text = "Start Alarm";
+                alarm2Hinput.ReadOnly = false;
+                alarm2Minput.ReadOnly = false;
+                errormessage.Text = "";
+            }
+            else
+            {
+                setalarm2 = true;
+                button4.Text = "Unset Alarm";
+                alarm2Hinput.ReadOnly = true;
+                alarm2Minput.ReadOnly = true;
+            }
+        }
+
+        private void Alarm2HourInput(object sender, EventArgs e)
+        {
+            Int32.TryParse(alarm2Hinput.Text, out alarm2hour);
+            if (alarm2hour < 0)
+            {
+                alarm2Hinput.Text = "0";
+                errormessage.Text = "!!  Minimum allowed number is 0  !!";
+            }
+            else if (alarm2hour >= 24)
+            {
+                alarm2Hinput.Text = "23";
+                errormessage.Text = "!!  Maximum allowed number is 23  !!";
+            }
+
+            TextBox textbox = sender as TextBox;
+            alarm2Hinput.Text = textbox.Text;
+        }
+
+        private void Alarm2MinuteInput(object sender, EventArgs e)
+        {
+            Int32.TryParse(alarm2Minput.Text, out alarm2minute);
+            if (alarm2minute < 0)
+            {
+                alarm2Minput.Text = "0";
+                errormessage.Text = "!!  Minimum allowed number is 0  !!";
+            }
+            else if (alarm2minute >= 60)
+            {
+                alarm2Minput.Text = "59";
+                errormessage.Text = "!!  Maximum allowed number is 59  !!";
+            }
+
+
+            TextBox textbox = sender as TextBox;
+            alarm2Minput.Text = textbox.Text;
         }
     }
 }
