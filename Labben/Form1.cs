@@ -222,27 +222,37 @@ namespace Labben
 
             }
         }
- 
+
         private void AlarmHourInput(object sender, EventArgs e)
         {
-            Int32.TryParse(alarmHinput.Text, out alarmhour);
-            if (alarmhour < 0)
+            try
             {
-                alarmHinput.Text = "0";
-                errormessage.Text = "!!  Minimum allowed number is 0  !!";
-            }
-            else if (alarmhour >= 24)
-            {
-                alarmHinput.Text = "23";
-                errormessage.Text = "!!  Maximum allowed number is 23  !!";
-            }
+                Int32.TryParse(alarmHinput.Text, out alarmhour);
+                if (alarmhour < 0)
+                {
+                    alarmHinput.Text = "0";
+                    errormessage.Text = "!!  Minimum allowed number is 0  !!";
+                }
+                else if (alarmhour >= 24)
+                {
+                    alarmHinput.Text = "23";
+                    errormessage.Text = "!!  Maximum allowed number is 23  !!";
+                }
 
-            TextBox textbox = sender as TextBox;
-            alarmHinput.Text = textbox.Text;
+                TextBox textbox = sender as TextBox;
+                alarmHinput.Text = textbox.Text;
+            }
+            catch (Exception)
+            {
+
+            }
+        
         }
 
         private void AlarmMinuteInput(object sender, EventArgs e)
         {
+            try 
+            { 
             Int32.TryParse(alarmMinput.Text, out alarmminute);
             if (alarmminute < 0)
             {
@@ -258,6 +268,10 @@ namespace Labben
 
             TextBox textbox = sender as TextBox;
             alarmMinput.Text = textbox.Text;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -286,6 +300,8 @@ namespace Labben
 
         private void Alarm2HourInput(object sender, EventArgs e)
         {
+            try
+            {            
             Int32.TryParse(alarm2Hinput.Text, out alarm2hour);
             if (alarm2hour < 0)
             {
@@ -300,10 +316,16 @@ namespace Labben
 
             TextBox textbox = sender as TextBox;
             alarm2Hinput.Text = textbox.Text;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void Alarm2MinuteInput(object sender, EventArgs e)
         {
+            try 
+            { 
             Int32.TryParse(alarm2Minput.Text, out alarm2minute);
             if (alarm2minute < 0)
             {
@@ -316,9 +338,12 @@ namespace Labben
                 errormessage.Text = "!!  Maximum allowed number is 59  !!";
             }
 
-
             TextBox textbox = sender as TextBox;
             alarm2Minput.Text = textbox.Text;
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
