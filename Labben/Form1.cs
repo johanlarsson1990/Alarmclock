@@ -22,8 +22,8 @@ namespace Labben
             errormessage.ForeColor = Color.Red;
         }
         public bool setalarm = false;
-        public int hourInput = 00;
-        public int minuteInput = 00;
+        //public int hourInput = 00;
+        //public int minuteInput = 00;
         public int alarmhour = 00;
         public int alarmminute = 00;
         Clock clock = new Clock();
@@ -34,7 +34,7 @@ namespace Labben
             hour.HourValue = Convert.ToInt32(clockHourInput.Text);
             clock.SetHour(hour.HourValue);
             //Int32.TryParse(clockHourInput.Text, out hourInput);
-            if (hourInput < 0)
+            if (hour.HourValue < 0)
             {
                 clockHourInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
@@ -55,7 +55,7 @@ namespace Labben
             minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
             clock.SetMinute(minute.MinuteValue);
             //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
-            if (minuteInput <0)
+            if (minute.MinuteValue < 0)
             {
                 clockMinuteInput.Text = "0";
                 errormessage.Text = "!!  Minimum allowed number is 0  !!";
@@ -133,8 +133,10 @@ namespace Labben
                     clockMinuteInput.ReadOnly = false;
                     clockhour.Text = clockHourInput.Text.ToString();
                     clockminute.Text = clockMinuteInput.Text.ToString();
-                    minuteInput = int.Parse(clockMinuteInput.Text);
-                    hourInput = int.Parse(clockHourInput.Text);
+                    //minuteInput = int.Parse(clockMinuteInput.Text);
+                    //hourInput = int.Parse(clockHourInput.Text);
+                    clock.Minute = int.Parse(clockMinuteInput.Text);
+                    clock.Hour = int.Parse(clockHourInput.Text);
                 }
                 else
                 {
@@ -177,14 +179,14 @@ namespace Labben
             {
                 if (int.Parse(clockminute.Text) == 59 && timer1.Enabled)
                 {
-                    minuteInput = 0;
-                    int addonehour = ++hourInput;
+                    clock.Minute = 0;
+                    int addonehour = clock.Hour++;
                     clockhour.Text = (addonehour).ToString();
                 }
                 if (int.Parse(clockhour.Text) == 23 && int.Parse(clockminute.Text) >= 59 && timer1.Enabled)
                 {
-                    hourInput = 0;
-                    minuteInput = 0;
+                    clock.Hour = 0;
+                    clock.Minute = 0;
                     clockhour.Text = "00";
                     clockminute.Text = "00";
                 }
@@ -202,8 +204,9 @@ namespace Labben
             {
                 if (int.Parse(clockhour.Text) == 24)
                 {
-                    hourInput = 0;
-                    clockhour.Text = hourInput.ToString();
+                    clock.Hour = 0;
+                    //clockhour.Text = hourInput.ToString();
+                    clockhour.Text = clock.Hour.ToString();
                 }
             }
             catch (Exception)
