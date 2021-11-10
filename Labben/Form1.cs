@@ -30,43 +30,53 @@ namespace Labben
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
-            Hour hour = new Hour();
-            hour.HourValue = Convert.ToInt32(clockHourInput.Text);
-            clock.SetHour(hour.HourValue);
-            //Int32.TryParse(clockHourInput.Text, out hourInput);
-            if (hour.HourValue < 0)
+            try
             {
-                clockHourInput.Text = "0";
-                errormessage.Text = "!!  Minimum allowed number is 0  !!";
-            }
-            else if (hour.HourValue >= 24)
-            {
-                clockHourInput.Text = "23";
-                errormessage.Text = "!!  Maximum allowed number is 23  !!";
-            }
+                Hour hour = new Hour();
+                hour.HourValue = Convert.ToInt32(clockHourInput.Text);
+                clock.SetHour(hour.HourValue);
+                //Int32.TryParse(clockHourInput.Text, out hourInput);
+                if (hour.HourValue < 0)
+                {
+                    clockHourInput.Text = "0";
+                    errormessage.Text = "!!  Minimum allowed number is 0  !!";
+                }
+                else if (hour.HourValue >= 24)
+                {
+                    clockHourInput.Text = "23";
+                    errormessage.Text = "!!  Maximum allowed number is 23  !!";
+                }
 
-            TextBox textbox = sender as TextBox;
-            clockhour.Text = textbox.Text;
+                TextBox textbox = sender as TextBox;
+                clockhour.Text = textbox.Text;
+
+            }
+           catch (Exception) { }
         }
 
         private void ClockMinuteInput(object sender, EventArgs e) //Tar emot användarens minut-val och ser till så de bara skrivs nummer mellan 0-59.
         {
-            Minute minute = new Minute();
-            minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
-            clock.SetMinute(minute.MinuteValue);
-            //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
-            if (minute.MinuteValue < 0)
+            try
             {
-                clockMinuteInput.Text = "0";
-                errormessage.Text = "!!  Minimum allowed number is 0  !!";
+                Minute minute = new Minute();
+                minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
+                clock.SetMinute(minute.MinuteValue);
+                //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
+                if (minute.MinuteValue < 0)
+                {
+                    clockMinuteInput.Text = "0";
+                    errormessage.Text = "!!  Minimum allowed number is 0  !!";
+                }
+                else if (minute.MinuteValue >= 60)
+                {
+                    clockMinuteInput.Text = "59";
+                    errormessage.Text = "!!  Maximum allowed number is 59  !!";
+                }
+                TextBox textbox = sender as TextBox;
+                clockminute.Text = textbox.Text;
+
             }
-            else if (minute.MinuteValue >= 60)
-            {
-                clockMinuteInput.Text = "59";
-                errormessage.Text = "!!  Maximum allowed number is 59  !!";
-            }
-            TextBox textbox = sender as TextBox;
-            clockminute.Text = textbox.Text;
+            catch (Exception) { }
         }
 
         private void OnlyNumbers(object sender, KeyPressEventArgs e) // Ser till så det inte skrivs in bokstäver/andra tecken i Set Hour & Set Minute:
@@ -96,7 +106,7 @@ namespace Labben
             clockhour.Text = hourString;
             if(int.Parse(clockminute.Text) >= alarmminute && int.Parse(clockminute.Text) == count)
             {
-               // this.webBrowser1.DocumentText = "";
+               this.webBrowser1.DocumentText = "";
                 errormessage.Text = "";
                 setalarm = false;
             }
@@ -113,6 +123,7 @@ namespace Labben
                 //"frameborder = \"0\" allow =\"autoplay;loop; encrypted-media\" allowfullscreen></iframe>" +
                 //"</body></html>";
                 //var url = "https://www.youtube.com/embed/iik25wqIuFo?autoplay=1&loop=1&playlist=iik25wqIuFo";
+
                 this.webBrowser1.DocumentText = string.Format(test[0],test[1]);
                 
                 
