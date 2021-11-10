@@ -21,13 +21,21 @@ namespace Labben
         {
             return Minute;
         }
-
-        public int SetTime(int hour, int minute)
+        public void SetHour(int hour)
         {
             Hour = hour;
+        }
+        public void SetMinute(int minute)
+        {
             Minute = minute;
+        }
+
+        public void SetTime(/*int hour, int minute*/)
+        {
+            //Hour = hour;
+            //Minute = minute;
             Time = Hour + Minute ;
-            return Time;
+            //return Time;
         }
 
         public void StartClock()

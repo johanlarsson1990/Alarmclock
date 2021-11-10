@@ -26,11 +26,13 @@ namespace Labben
         public int minuteInput = 00;
         public int alarmhour = 00;
         public int alarmminute = 00;
+        Clock clock = new Clock();
         
         private void ClockHourInput(object sender, EventArgs e) //Tar emot användarens tim-val och ser till så de bara skrivs nummer mellan 0-23.
         {
             Hour hour = new Hour();
             hour.HourValue = Convert.ToInt32(clockHourInput.Text);
+            clock.SetHour(hour.HourValue);
             //Int32.TryParse(clockHourInput.Text, out hourInput);
             if (hourInput < 0)
             {
@@ -51,6 +53,7 @@ namespace Labben
         {
             Minute minute = new Minute();
             minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
+            clock.SetMinute(minute.MinuteValue);
             //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
             if (minuteInput <0)
             {
@@ -86,8 +89,8 @@ namespace Labben
 
         private void timer1_Tick(object sender, EventArgs e) // Timer-funktion för Minute-räknare i Klockan.
         {
-            var hourString = hourInput < 9 ? "0" + hourInput : hourInput.ToString();
-            var minuteString = minuteInput > 9 ? minuteInput++.ToString() : "0" + minuteInput++;
+            var hourString = clock.Hour < 9 ? "0" + clock.Hour : clock.Hour.ToString();
+            var minuteString = clock.Minute > 9 ? clock.Minute++.ToString() : "0" + clock.Minute++;
             int count = alarmminute + 10;
             clockminute.Text = minuteString;
             clockhour.Text = hourString;
