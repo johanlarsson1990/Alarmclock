@@ -109,6 +109,7 @@ namespace Labben
             int count2 = alarm2minute + 10;
             clockminute.Text = minuteString;
             clockhour.Text = hourString;
+            AddHourIfMin60();
             if(int.Parse(clockminute.Text) >= alarmminute && int.Parse(clockminute.Text) == count)
             {
                 errormessage.Text = "";
@@ -193,7 +194,7 @@ namespace Labben
                 alarmMinput.ReadOnly = true;   
             }
         }
-        private void AddHourIfMin60(object sender, EventArgs e) // If-sats som inkrementerar Hour med 1 när det blir 60 minuter.
+        private void AddHourIfMin60() // If-sats som inkrementerar Hour med 1 när det blir 60 minuter.
         {
             try
             {
@@ -356,6 +357,11 @@ namespace Labben
             catch (Exception)
             {
             }
+        }
+
+        private void clockhour_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

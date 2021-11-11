@@ -117,6 +117,7 @@ namespace Labben
             this.clockhour.TabIndex = 5;
             this.clockhour.Text = "00";
             this.clockhour.TextChanged += new System.EventHandler(this.RestartHourIf24);
+            this.clockhour.Click += new System.EventHandler(this.clockhour_Click);
             // 
             // clockminute
             // 
@@ -127,7 +128,6 @@ namespace Labben
             this.clockminute.Size = new System.Drawing.Size(49, 33);
             this.clockminute.TabIndex = 6;
             this.clockminute.Text = "00";
-            this.clockminute.TextChanged += new System.EventHandler(this.AddHourIfMin60);
             // 
             // label6
             // 
