@@ -109,10 +109,6 @@ namespace Labben
             clockminute.Text = minuteString;
             clockhour.Text = hourString;
             AddHourIfMin60();
-            //alarm1.SetAlarm(alarm1.AlarmHour, alarm1.AlarmMinute);
-            //alarm2.SetAlarm(alarm2.AlarmHour, alarm2.AlarmMinute);
-            //setalarm = alarm1.CheckAlarm(int.Parse(clockhour.Text), int.Parse(clockminute.Text));
-            //setalarm2 = alarm2.CheckAlarm(int.Parse(clockhour.Text), int.Parse(clockminute.Text));
             
             if(int.Parse(clockminute.Text) >= alarm1.AlarmMinute && int.Parse(clockminute.Text) == count) //Stänger av larm
             {
@@ -123,8 +119,7 @@ namespace Labben
             
             if (alarm1.AlarmHour == int.Parse(clockhour.Text) & alarm1.AlarmMinute == int.Parse(clockminute.Text) & setalarm == true)
             {
-                Alarm alarm = new Alarm();
-                var test = alarm.AlarmFunction();
+                var test = alarm1.AlarmFunction();
                 Alarm1message.Text = "WAKI WAKI HANDS OFF SNAKEY!!!!";
                 this.webBrowser1.DocumentText = string.Format(test[0],test[1]);
             }
@@ -136,13 +131,10 @@ namespace Labben
 
             if (alarm2.AlarmHour == int.Parse(clockhour.Text) & alarm2.AlarmMinute == int.Parse(clockminute.Text) & setalarm2 == true)
             {
-                Alarm alarm2 = new Alarm();
                 var test2 = alarm2.AlarmFunction();
                 alarm2message.Text = "För att stänga av ljudet, hitta knappen";
                 this.webBrowser1.DocumentText = string.Format(test2[0], test2[1]);
             }
-
-
         }
 
         private void startButton(object sender, EventArgs e) //Start-knappen till klock-timern.
@@ -239,7 +231,6 @@ namespace Labben
                 {
                     alarmHinput.Text = "23";
                     errormessage.Text = "!!  Maximum allowed number is 23  !!";
-                    
                 }
 
                 TextBox textbox = sender as TextBox;
@@ -261,7 +252,6 @@ namespace Labben
                 {
                     alarmMinput.Text = "0";
                     errormessage.Text = "!!  Minimum allowed number is 0  !!";
-                    
                 }
                 else if (alarm1.AlarmMinute >= 60)
                 {

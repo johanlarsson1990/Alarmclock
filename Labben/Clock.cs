@@ -10,8 +10,6 @@ namespace Labben
     {
         public int Hour { get; set; }
         public int Minute { get; set; }
-        public int Time { get; set; }
-
         
         public void SetHour(int hour)
         {

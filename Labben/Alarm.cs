@@ -10,24 +10,10 @@ namespace Labben
     {
         public int AlarmHour { get; set; }
         public int AlarmMinute { get; set; }
-        public int Everything => AlarmHour + AlarmMinute;
+        
         public Alarm()
         {
 
-        }
-        public bool CheckAlarm(int hour, int minute)
-        {
-            if (hour == AlarmHour && minute == AlarmMinute)
-            {
-                return true;
-            }
-            else return false;
-        }
-        public int SetAlarm(int hour, int minute)
-        {
-            AlarmHour = hour;
-            AlarmMinute = minute;
-            return Everything;        
         }
         public List<string> AlarmFunction()
         {

@@ -10,8 +10,5 @@ namespace Labben
     {
         int Hour { get; set; }
         int Minute { get; set; }
-        
-
-
     }
 }
