@@ -54,6 +54,8 @@ namespace Labben
             this.alarm2Hinput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.Alarm1message = new System.Windows.Forms.Label();
+            this.alarm2message = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -293,11 +295,29 @@ namespace Labben
             this.label9.TabIndex = 19;
             this.label9.Text = "Set Hour: ";
             // 
+            // Alarm1message
+            // 
+            this.Alarm1message.AutoSize = true;
+            this.Alarm1message.Location = new System.Drawing.Point(80, 250);
+            this.Alarm1message.Name = "Alarm1message";
+            this.Alarm1message.Size = new System.Drawing.Size(0, 13);
+            this.Alarm1message.TabIndex = 24;
+            // 
+            // alarm2message
+            // 
+            this.alarm2message.AutoSize = true;
+            this.alarm2message.Location = new System.Drawing.Point(382, 250);
+            this.alarm2message.Name = "alarm2message";
+            this.alarm2message.Size = new System.Drawing.Size(0, 13);
+            this.alarm2message.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(529, 422);
+            this.Controls.Add(this.alarm2message);
+            this.Controls.Add(this.Alarm1message);
             this.Controls.Add(this.alarm2Minput);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.alarm2Hinput);
@@ -356,6 +376,8 @@ namespace Labben
         private System.Windows.Forms.TextBox alarm2Hinput;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Alarm1message;
+        private System.Windows.Forms.Label alarm2message;
     }
 }
 

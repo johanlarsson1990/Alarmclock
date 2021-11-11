@@ -12,15 +12,15 @@ namespace Labben
         public int Minute { get; set; }
         public int Time { get; set; }
 
-        public int GetHours()
-        {
-            return Hour;
-        }
+        //public int GetHours()
+        //{
+        //    return Hour;
+        //}
 
-        public int GetMinutes()
-        {
-            return Minute;
-        }
+        //public int GetMinutes()
+        //{
+        //    return Minute;
+        //}
         public void SetHour(int hour)
         {
             Hour = hour;
@@ -38,15 +38,15 @@ namespace Labben
             //return Time;
         }
 
-        public void StartClock()
-        {
-            throw new NotImplementedException();
-        }
+        //public void StartClock()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public void StopClock()
-        {
-            throw new NotImplementedException();
-        }
+        //public void StopClock()
+        //{
+        //    throw new NotImplementedException();
+        //}
      
     }
 }
