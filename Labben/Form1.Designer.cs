@@ -119,7 +119,6 @@ namespace Labben
             this.clockhour.TabIndex = 5;
             this.clockhour.Text = "00";
             this.clockhour.TextChanged += new System.EventHandler(this.RestartHourIf24);
-            this.clockhour.Click += new System.EventHandler(this.clockhour_Click);
             // 
             // clockminute
             // 
@@ -298,7 +297,7 @@ namespace Labben
             // Alarm1message
             // 
             this.Alarm1message.AutoSize = true;
-            this.Alarm1message.Location = new System.Drawing.Point(80, 250);
+            this.Alarm1message.Location = new System.Drawing.Point(18, 250);
             this.Alarm1message.Name = "Alarm1message";
             this.Alarm1message.Size = new System.Drawing.Size(0, 13);
             this.Alarm1message.TabIndex = 24;
@@ -306,7 +305,7 @@ namespace Labben
             // alarm2message
             // 
             this.alarm2message.AutoSize = true;
-            this.alarm2message.Location = new System.Drawing.Point(382, 250);
+            this.alarm2message.Location = new System.Drawing.Point(316, 250);
             this.alarm2message.Name = "alarm2message";
             this.alarm2message.Size = new System.Drawing.Size(0, 13);
             this.alarm2message.TabIndex = 25;

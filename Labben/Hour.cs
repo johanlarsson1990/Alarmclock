@@ -13,9 +13,6 @@ namespace Labben
         {
 
         }
-        void Tick()
-        {
-
-        }
+        
     }
 }

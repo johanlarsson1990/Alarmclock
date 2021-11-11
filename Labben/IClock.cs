@@ -10,11 +10,7 @@ namespace Labben
     {
         int Hour { get; set; }
         int Minute { get; set; }
-        //int GetHours();
-        //int GetMinutes();
-        void SetTime(/*int hour, int minute*/);
-        //void StartClock();
-        //void StopClock();
+        
 
 
     }
