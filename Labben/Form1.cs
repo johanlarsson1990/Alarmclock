@@ -166,11 +166,9 @@ namespace Labben
                     clockHourInput.ReadOnly = true;
                     clockMinuteInput.ReadOnly = true;
                 }
-
             }
             catch (Exception)
             {
-                
                 
             }
         }
@@ -203,15 +201,7 @@ namespace Labben
                     clock.Minute = 0;
                     int addonehour = clock.Hour++;
                     clockhour.Text = (addonehour).ToString();
-                }
-                if (int.Parse(clockhour.Text) == 23 && int.Parse(clockminute.Text) > 59 && timer1.Enabled)
-                {
-                    clock.Hour = 0;
-                    clock.Minute = 0;
-                    clockhour.Text = "00";
-                    clockminute.Text = "00";
-                }
-                       
+                }    
             }
             catch (Exception)
             {
@@ -226,8 +216,7 @@ namespace Labben
                 if (int.Parse(clockhour.Text) == 24)
                 {
                     clock.Hour = 0;
-                    //clockhour.Text = hourInput.ToString();
-                    clockhour.Text = clock.Hour.ToString();
+                    clockhour.Text = "00";
                 }
             }
             catch (Exception)
