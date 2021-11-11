@@ -35,17 +35,23 @@ namespace Labben
             {
                 Hour hour = new Hour();
                 hour.HourValue = Convert.ToInt32(clockHourInput.Text);
-                clock.SetHour(hour.HourValue);
+                
                 //Int32.TryParse(clockHourInput.Text, out hourInput);
-                if (hour.HourValue < 0)
+                if (hour.HourValue >= 0 && hour.HourValue < 24)
+                {
+                    clock.SetHour(hour.HourValue);
+                }
+                else if (hour.HourValue < 0)
                 {
                     clockHourInput.Text = "0";
                     errormessage.Text = "!!  Minimum allowed number is 0  !!";
+                    clock.SetHour(0);
                 }
                 else if (hour.HourValue >= 24)
                 {
                     clockHourInput.Text = "23";
                     errormessage.Text = "!!  Maximum allowed number is 23  !!";
+                    clock.SetHour(23);
                 }
 
                 TextBox textbox = sender as TextBox;
@@ -61,17 +67,23 @@ namespace Labben
             {
                 Minute minute = new Minute();
                 minute.MinuteValue = Convert.ToInt32(clockMinuteInput.Text);
-                clock.SetMinute(minute.MinuteValue);
+                
                 //Int32.TryParse(clockMinuteInput.Text, out minuteInput);
-                if (minute.MinuteValue < 0)
+                if (minute.MinuteValue >= 0 && minute.MinuteValue < 60)
+                {
+                    clock.SetMinute(minute.MinuteValue);
+                }
+                else if (minute.MinuteValue < 0)
                 {
                     clockMinuteInput.Text = "0";
                     errormessage.Text = "!!  Minimum allowed number is 0  !!";
+                    clock.SetMinute(0);
                 }
                 else if (minute.MinuteValue >= 60)
                 {
                     clockMinuteInput.Text = "59";
                     errormessage.Text = "!!  Maximum allowed number is 59  !!";
+                    clock.SetMinute(59);
                 }
                 TextBox textbox = sender as TextBox;
                 clockminute.Text = textbox.Text;
@@ -191,7 +203,7 @@ namespace Labben
                     int addonehour = clock.Hour++;
                     clockhour.Text = (addonehour).ToString();
                 }
-                if (int.Parse(clockhour.Text) == 23 && int.Parse(clockminute.Text) >= 59 && timer1.Enabled)
+                if (int.Parse(clockhour.Text) == 23 && int.Parse(clockminute.Text) > 59 && timer1.Enabled)
                 {
                     clock.Hour = 0;
                     clock.Minute = 0;
