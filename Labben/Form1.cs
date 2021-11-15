@@ -127,14 +127,16 @@ namespace Labben
             {
                 alarm2message.Text = "";
                 setalarm2 = false;
+                this.webBrowser1.DocumentText = "";
             }
 
             if (alarm2.AlarmHour == int.Parse(clockhour.Text) & alarm2.AlarmMinute == int.Parse(clockminute.Text) & setalarm2 == true)
             {
                 var test2 = alarm2.AlarmFunction();
-                alarm2message.Text = "För att stänga av ljudet, hitta knappen";
+                alarm2message.Text = "ALARM 2!!!!!!";
                 this.webBrowser1.DocumentText = string.Format(test2[0], test2[1]);
             }
+            
         }
 
         private void startButton(object sender, EventArgs e) //Start-knappen till klock-timern.
@@ -158,7 +160,10 @@ namespace Labben
                     timer1.Start();
                     clockHourInput.ReadOnly = true;
                     clockMinuteInput.ReadOnly = true;
+                    setalarm = true;
+                    setalarm2 = true;
                 }
+                
             }
             catch (Exception)
             {
